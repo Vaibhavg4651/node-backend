@@ -1,8 +1,9 @@
-const {readFile} = require('fs');
+const {readFile, writeFile} = require('fs');
 const util = require('util');
 const readFilePromise = util.promisify(readFile)
+const writeFilePromise = util.promisify(writeFile)
 
-
+//const getText = (path) =>{
 // return new Promise((resolve,reject)=>{
     // readFile(path,'utf8',(err,data)=>{
             // const getText =(path)=>{
@@ -20,8 +21,9 @@ const readFilePromise = util.promisify(readFile)
 
 const start = async() =>{
     try{
-        const first = await getText('./content/subcontent/first.txt');
-        const second = await getText('./content/subcontent/second.txt');
+        const first = await readFilePromise('./content/subcontent/first.txt','utf-8');
+        const second = await readFilePromise('./content/subcontent/second.txt','utf-8');
+        await writeFilePromise('./content/subcontent/nice.txt',"This is awesome")
         console.log(first);
         console.log(second);
     } catch (error){
