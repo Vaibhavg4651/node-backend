@@ -1,4 +1,5 @@
-const {readFileSync,writeFileSync} = require('fs');
+const {readFileSync,writeFileSync, createReadStream} = require('fs');
+const { result } = require('lodash');
 
 // const first = readFileSync('./content/subcontent/first.txt','utf-8');
 // 
@@ -31,3 +32,14 @@ readFileSync('./content/subcontent/first.txt', 'utf-8',(err,result)=>{
     })
 
 })
+
+//stream example
+const stream = createReadStream('./content/subcontent/nice.txt',{
+    highWaterMark:90000,
+    encoding:'utf-8'
+})
+
+stream.on('data',(result) =>{
+    console.log(result)
+})
+stream.on('error',(err)=> console.log(err))

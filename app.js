@@ -15,7 +15,7 @@ customEmitter.on('response',()=>{
 })
 
 customEmitter.on('response',()=>{
-    console.log(`some other logic here `);
+    console.log(`some other logic here`);
 })
 
 
